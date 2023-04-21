@@ -1,0 +1,249 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="phdhtl.cntt.util.connectSQL"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!doctype html>
+<html lang="en">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+
+<title>Trang chủ</title>
+</head>
+
+<body>
+
+	<%
+	String sql = "";
+	Connection connection = connectSQL.getConnectionSQLServer();
+	PreparedStatement preparedStatement;
+	ResultSet rs;
+	%>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Navbar</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Dropdown </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="#">Action</a></li>
+							<li><a class="dropdown-item" href="#">Another action</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="#">Something else
+									here</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link disabled">Disabled</a>
+					</li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Search"
+						aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+
+
+	<!-- body index -->
+	<div style="margin: 40px 10px;">
+		<div class="row">
+			<div class="col-md-2">
+				<table style="width: 80%; height: 150px;">
+					<tr class="id"
+						style="border: 1px solid; padding: 50px; text-align: center;">
+						<td><a href=""> Nhà xuất bản </a></td>
+					</tr>
+					<tr class="id"
+						style="border: 1px solid; padding: 50px; text-align: center;">
+						<td><a href="">Thể loại</a></td>
+					</tr>
+					<tr class="id"
+						style="border: 1px solid; padding: 50px; text-align: center;">
+						<td><a href="">Năm phát hành</a></td>
+					</tr>
+
+				</table>
+
+
+			</div>
+			<div class="col-md-9">
+
+
+				<h2>Sản phẩm mới</h2>
+				<div class="row row-cols-1 row-cols-md-3 g-4">
+				<%
+					sql = "select*from Sach";
+					preparedStatement = connection.prepareStatement(sql);
+					rs = preparedStatement.executeQuery();
+					while(rs.next()){
+				%>
+					<div class="col">
+						<div class="card h-100">
+							<img style="height:300px; width: 65%;margin: auto; padding : 10px 0;"
+							
+							 src="${pageContext.request.contextPath}/views/img/<%=rs.getNString("Anhbia") %>"
+								class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 style="text-align: center; font-size: 25px;"><%=rs.getNString("TenSach") %></h5>
+								<p class="card-text"></p>
+								<p 
+								style="text-align: left; 
+								padding-left: 15%; 
+								font-size: 20px;
+								color: orange;
+								">
+								<%=rs.getFloat("Gia") %>
+								</p>
+								<p 
+								style="text-align: left; 
+								padding-left: 15%; 
+								font-size: 20px;
+								color: orange;
+								">
+									<button type="submit"
+									style="
+									background-color: white ;
+									border: 1px solid green;
+									color: green;
+									padding: 5px;
+									border-radius : 5px;
+									"
+									
+									>
+									Thêm giỏ hàng
+									
+									</button>
+								</p>
+							</div>
+							<div class="card-footer">
+								<a href="${pageContext.request.contextPath}/views/chitiet.jsp?id=<%=rs.getNString("MaSach")%>">Xem
+										chi tiết</a>
+							</div>
+						</div>
+					</div>
+					<%} %>
+
+				</div>
+
+				<div style="margin: 50px 0px;"></div>
+
+
+				<!--  -->
+
+
+				
+				<h2>Sản phẩm bán chạy</h2>
+				<div class="row row-cols-1 row-cols-md-3 g-4">
+				
+					<div class="col">
+						<div class="card h-100">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">This is a wider card with supporting
+									text below as a natural lead-in to additional content. This
+									content is a little bit longer.</p>
+							</div>
+							<div class="card-footer">
+								<small class="text-muted">Last updated 3 mins ago</small>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+
+				<div style="margin: 50px 0px;"></div>
+
+
+				<!--  -->
+
+				<h2>Toàn bộ</h2>
+				<div class="row row-cols-1 row-cols-md-3 g-4">
+					<div class="col">
+						<div class="card h-100">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">This is a wider card with supporting
+									text below as a natural lead-in to additional content. This
+									content is a little bit longer.</p>
+							</div>
+							<div class="card-footer">
+								<small class="text-muted">Last updated 3 mins ago</small>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">This card has supporting text below as
+									a natural lead-in to additional content.</p>
+							</div>
+							<div class="card-footer">
+								<small class="text-muted">Last updated 3 mins ago</small>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">This is a wider card with supporting
+									text below as a natural lead-in to additional content. This
+									card has even longer content than the first to show that equal
+									height action.</p>
+							</div>
+							<div class="card-footer">
+								<small class="text-muted">Last updated 3 mins ago</small>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+
+	<!-- Optional JavaScript; choose one of the two! -->
+
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

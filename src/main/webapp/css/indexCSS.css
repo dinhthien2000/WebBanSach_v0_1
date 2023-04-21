@@ -1,0 +1,310 @@
+@charset "UTF-8";
+:root {
+    --main-bg-color: #fff;
+    --second-bg-color: #f5f5f5;
+    --third-bg-color: #e3e3e3;
+    --grey: #4b4b4b;
+    --black: #000;
+    --red: #c0392b;
+    --top-header-size: 30px;
+    --mid-header-size: 80px;
+    --bottom-header-size: 45px;
+    --btn-bg: #000;
+    --btn-border-color: #000;
+    --btn-color: #fff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    background-color: var(--main-bg-color);
+    overflow-x: hidden;
+}
+button {
+    cursor: pointer;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: unset;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.header-top {
+    justify-content: center;
+    align-items: center;
+}
+.mid-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    background-color: var(--main-bg-color);
+}
+.container {
+    max-width: 1366px;
+    margin: auto;
+    padding: 0 20px;
+    position: relative;
+}
+.logo  {
+    font-size: 40px;
+    font-weight: 700;
+    
+}
+
+
+.main-menu {
+    position: relative;
+    display: flex;
+}
+
+
+
+.main-menu > li > a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    font-weight: 600;
+    height: 100%;
+    text-transform: uppercase;
+    padding: 0 30px;
+}
+
+.main-menu > li:hover {
+    border-bottom: 2px solid var(--red);
+}
+
+
+
+
+.dropdown-menu {
+    
+    position: absolute;
+    background-color: rgb(241, 236, 236);
+    display: none;
+}
+
+.dropdown-menu li a {
+    
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-weight: 400;
+    height: 100%;
+    text-transform: uppercase;
+    padding: 0 20px;
+}
+
+.dropdown-menu li {
+    
+    padding: 5px;
+}
+
+
+
+.main-menu li:hover .dropdown-menu {
+    display: block;
+}
+
+.form-control {
+    
+    border-radius: 5px;
+    padding: 8px;
+}
+.btn-outline-success {
+    border-radius: 3px;
+    background-color: #000;
+    padding: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-3 {
+    width: 25%;
+}
+.col-9 {
+    width: 75%;
+}
+.box {
+    padding: 20px;
+}
+.filter-header {
+    
+    display: block;
+    margin: 20px 50px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+
+
+.test-a:hover {
+    color: var(--red);
+}
+.section-header {
+    padding-bottom: 40px;
+    text-align: center;
+    
+}
+.product-card {
+    background-color: var(--main-bg-color);
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+}
+.product-card-img img {
+    width: 206px;
+    height: 277px;
+}
+.product-card-info {
+   
+    text-align: center;
+    
+}
+.product-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+   
+}
+.btn-flat {
+    display: inline-block;
+    border: 2px solid var(--btn-border-color);
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    padding: 10px;
+    font-size: 15px;
+    outline: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.btn-hover:hover {
+    background-color: var(--btn-color);
+    color: var(--btn-bg);
+}
+
+
+.btn-flat > span > a {
+    width: 150px;
+    height: 55px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+   
+    
+
+}
+
+.padding-card {
+    margin-right: 20px;
+}
+
+.bg-second {
+    background-color: var(--second-bg-color);
+}
+
+footer {
+    padding: 100px 0;
+}
+
+.footer-head {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+.contact-header {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 30px;
+    font-size: 38px;
+}
+
+.contact-socials {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-socials a {
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.contact-socials a:hover {
+    color: var(--grey);
+}
+
+.menu li a {
+    text-transform: capitalize;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu li a:hover {
+    color: var(--red);
+    transform: translateX(10px);
+}
+
+.subscribe {
+    width: 500px;
+    position: relative;
+    
+
+    margin: 0 auto;
+}
+
+.subscribe input {
+    width: 100%;
+    height: 50px;
+    outline: 0;
+    border: 0;
+    padding: 0 30px;
+}
+
+.subscribe button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    outline: 0;
+    border: 0;
+    background-color: var(--red);
+    color: var(--btn-color);
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.subscribe button:hover {
+    background-color: var(--black);
+}
+
+.end-pro p{
+    text-align: center;
+    padding-top: 30px;
+    font-weight: 600;
+}
